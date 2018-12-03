@@ -8,6 +8,12 @@ C言語のインクルード文をソースコードのトップに移動する�
 Plug 'homedm/cinclude.vim', { 'for': 'c' }
 ```
 
+## Usage
+do this command:
+:CInclude \<head file name\>
+add "#include\<head filename.h\>"
+
+
 ## Configure
 g:cinclude\_start\_line
 default: 1
