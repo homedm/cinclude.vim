@@ -16,7 +16,7 @@ add "#include\<head filename.h\>"
 
 ## Configure
 g:cinclude\_start\_line
-default: 1
+default: 0
 
 g:cinclude\_last\_line
 default: 50

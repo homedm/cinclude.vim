@@ -19,7 +19,7 @@ if !exists('cinclude_last_line')
 endif
 
 if !exists('cinclude_start_line')
-    let g:cinclude_start_line = 1
+    let g:cinclude_start_line = 0
 endif
 
 "=============================================================================
@@ -35,7 +35,7 @@ function! s:get_last_line() abort
 endfunction
 
 function! s:get_start_line() abort
-    let l:start = 1
+    let l:start = 0
     if g:cinclude_start_line >= l:start
         return g:cinclude_start_line
     endif
@@ -48,7 +48,7 @@ function! cinclude#add_include_sentence(headfile) abort
     let l:i = s:get_start_line()
     let l:last = s:get_last_line()
     let endIncline = l:i
-    while l:i <= l:last
+    while l:i < l:last
         let curline =  getline(l:i)
         if curline =~ '^#include\s*<\s*'
             let endIncline = l:i
@@ -59,6 +59,7 @@ function! cinclude#add_include_sentence(headfile) abort
         endif
         let l:i += 1
     endwhile
+    let l:i -= 1
 
     " headfileがまだインクルードされていなければ、追加する。
     let insert = '#include<'.a:headfile.'.h>'
